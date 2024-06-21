@@ -5,9 +5,11 @@ def main():
     chars_dict = get_num_chars(text)
     chars_dict_list = dict_to_list(chars_dict)
     chars_dict_list.sort(reverse=True, key=sort_on)
+    
     print(f"--- Begin report of {book_path} ---")
     print(f"{num_words} words found in the document")
-    print("")
+    print()
+    
     for char_dict in chars_dict_list:
         char = char_dict["char"]
         times = char_dict["count"]
@@ -20,10 +22,7 @@ def sort_on(dict):
 def dict_to_list(dict):
     list = []
     for k in dict:
-        tmp_dict = {}
-        tmp_dict["char"] = k
-        tmp_dict["count"] = dict[k]
-        list.append(tmp_dict)
+        list.append({"char": k, "count": dict[k]})
     return list
 
 def get_num_chars(text):
